@@ -1,4 +1,4 @@
-# Naučite Git od nule - Tutorijal na srpskom 🇷🇸
+# Naučite Git od nule 
 
 Ovaj repozitorijum je praktični vodič za učenje Git osnova, sa posebnim fokusom na:
 - Pravljenje grana (branches)
@@ -134,7 +134,7 @@ git push
 | `git rebase main`           | Ažuriraj granu na najnoviji main      |
 
 ## 📝 Zadatak za vežbu
-1. Dodajte funkciju za kvadratni koren u novoj grani
+1. Dodajte novu matematicku funkciju u novoj grani
 2. Spojite je u main granu
 3. Simulirajte konflikt sa drugim korisnikom
 4. Rešite konflikt i potvrdite rešenje
