@@ -17,7 +17,7 @@ learn-git-srpski/
 ## 🛠️ Kako početi
 1. Klonirajte repozitorijum:
    ```bash
-   git clone https://github.com/vas-username/learn-git-srpski.git
+   git clone https://github.com/PetrarkaR/BEST-Nis-tut
    ```
 2. Otvorite folder u editoru (VSCode, PyCharm itd)
 
