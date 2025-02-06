@@ -10,7 +10,7 @@ Ovaj repozitorijum je praktični vodič za učenje Git osnova, sa posebnim fokus
 ```
 learn-git-srpski/
 ├── README.md       - Ovo je glavni dokument
-├── calc.py         - Prost kalkulator za vežbu
+├── tutorial.py         - Prost kalkulator za vežbu
 └── .gitignore      - Ignore lista za nepotrebne fajlove
 ```
 
