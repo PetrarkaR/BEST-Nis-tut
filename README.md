@@ -1,140 +1,176 @@
-# Naučite Git od nule 
+# Git Fork Workflow Tutorial
 
-Ovaj repozitorijum je praktični vodič za učenje Git osnova, sa posebnim fokusom na:
-- Pravljenje grana (branches)
-- Spajanje promena (merge)
-- Rad sa udaljenim repozitorijumom (remote)
-- Rešavanje konflikata
+## 🎯 Uvod
+Ovaj vodič će vam pomoći da naučite kako da koristite Git kroz fork workflow. Ovo je idealan pristup za timove gde članovi nemaju direktan pristup glavnom repozitorijumu.
 
-## 📂 Struktura projekta
-```
-learn-git-srpski/
-├── README.md       - Ovo je glavni dokument
-├── tutorial.py         - Prost kalkulator za vežbu
-└── .gitignore      - Ignore lista za nepotrebne fajlove
-```
+## 📋 Preduslovi
+- GitHub nalog
+- Git instaliran na računaru
+- Osnovne CLI (Command Line Interface) veštine
 
-## 🛠️ Kako početi
-1. Klonirajte repozitorijum:
-   ```bash
-   git clone https://github.com/PetrarkaR/BEST-Nis-tut
-   ```
-2. Otvorite folder u editoru (VSCode, PyCharm itd)
+## 🚀 Prvi koraci
 
-## 🌿 Git Grane - Detaljni Tutorijal
+### 1. Fork repozitorijuma
+1. Posetite `https://github.com/PetrarkaR/BEST-Nis-tut`
+2. Kliknite "Fork" dugme u gornjem desnom uglu
+3. Sačekajte da GitHub napravi kopiju na vašem nalogu
 
-### 1. Kreiranje nove grane
-Da napravite novu granu za svoje promene:
+### 2. Kloniranje vašeg fork-a
 ```bash
-git checkout -b moja-nova-grana
-```
-Primer: `git checkout -b dodaj-stepenovanje`
-
-### 2. Pregled svih grana
-Proverite koje grane postoje:
-```bash
-git branch
+# Zamenite YOUR-USERNAME sa vašim GitHub korisničkim imenom
+git clone https://github.com/YOUR-USERNAME/BEST-Nis-tut.git
+cd BEST-Nis-tut
 ```
 
-### 3. Promena grane
-Za prelazak na drugu granu:
+### 3. Povezivanje sa originalnim repozitorijumom
 ```bash
-git checkout ime-grane
-```
-Primer: `git checkout main`
+# Dodajte original kao "upstream" remote
+git remote add upstream https://github.com/PetrarkaR/BEST-Nis-tut.git
 
-### 4. Sinronizacija sa glavnom granom
-Uvek počnite ažuriranjem glavne grane:
+# Proverite remote-ove
+git remote -v
+```
+
+## 💻 Rad na projektu
+
+### 1. Sinhronizacija sa originalnim repozitorijumom
 ```bash
+# Preuzmite promene
+git fetch upstream
+
+# Prebacite se na main granu
 git checkout main
-git pull origin main
+
+# Ažurirajte vašu main granu
+git merge upstream/main
+
+# Ažurirajte vaš fork
+git push origin main
 ```
 
-### 5. Spajanje grana (merge)
-Kada završite promene u svojoj grani, spojite ih u main:
+### 2. Kreiranje nove grane za funkcionalnost
 ```bash
-git checkout main
-git merge moja-nova-grana
+# Napravite i prebacite se na novu granu
+git checkout -b feature/nova-funkcionalnost
 ```
 
-### 6. Slanje promena na GitHub
-Posle commita, pošaljite svoju granu na GitHub:
-```bash
-git push origin ime-vase-grane
+### 3. Rad na kodu
+Otvorite `tutorial.py` i dodajte vašu funkcionalnost. Na primer:
+```python
+def nova_funkcija(x, y):
+    return x * y
+
+# Dodajte u meni
+print("6. Nova Funkcija")
+
+# Dodajte u logiku izbora
+elif izbor == '6':
+    print(f"Rezultat: {nova_funkcija(broj1, broj2)}")
 ```
 
-## 💻 Praktični Primer: Dodajte novu funkcionalnost
+### 4. Commit promena
+```bash
+# Dodajte promene
+git add tutorial.py
 
-Hajde da dodamo stepenovanje u `calc.py` koristeći grane:
+# Napravite commit
+git commit -m "Dodata nova funkcionalnost"
 
-1. Napravite novu granu:
-   ```bash
-   git checkout -b dodaj-stepenovanje
-   ```
+# Pošaljite promene na vaš fork
+git push origin feature/nova-funkcionalnost
+```
 
-2. U `calc.py` dodajte funkciju:
-   ```python
-   def stepenovanje(a, b):
-       return a ** b
-   ```
+## 📤 Kreiranje Pull Request-a
 
-3. Dodajte opciju u meni (oko linije 20):
-   ```python
-   print("5. Stepenovanje")
-   ```
+1. Idite na vaš fork na GitHub-u
+2. Kliknite "Pull Request"
+3. Odaberite vašu feature granu
+4. Za base repository izaberite originalni repozitorijum
+5. Napišite jasan opis promena
+6. Kliknite "Create Pull Request"
 
-4. Dodajte logiku za izbor (u if/elif bloku):
-   ```python
-   elif izbor == '5':
-       print(f"Rezultat: {stepenovanje(broj1, broj2)}")
-   ```
+## 🔄 Rešavanje konflikata
 
-5. Sačuvajte promene i uradite commit:
-   ```bash
-   git add calc.py
-   git commit -m "Dodata funkcionalnost stepenovanja"
-   ```
-
-6. Pošaljite granu na GitHub:
-   ```bash
-   git push origin dodaj-stepenovanje
-   ```
-
-7. Napravite Pull Request na GitHub interfejsu!
-
-## 🔄 Rešavanje konflikata - Simulacija problema
-
-Da vežbamo rešavanje konflikata:
-
-1. Dva korisnika menjaju istu liniju u `calc.py`
-2. Prvi korisnik merguje svoje promene u main
-3. Drugi korisnik dobija konflikt pri pokušaju merga
-4. Rešite konflikt ručno u editoru
-5. Uradite commit sa rešenim konfliktom
+Ako se pojavi konflikt:
 
 ```bash
-# Nakon konflikta:
+# Sinhronizujte se sa upstream-om
+git fetch upstream
+
+# Prebacite se na vašu granu
+git checkout feature/nova-funkcionalnost
+
+# Spojite promene iz upstream/main
+git merge upstream/main
+
+# Rešite konflikte u editoru
+# Nakon rešavanja:
 git add .
-git commit -m "Rešen konflikt u calc.py"
-git push
+git commit -m "Rešen konflikt"
+git push origin feature/nova-funkcionalnost
 ```
 
-## 📋 Preporučeni workflow
-1. Uvek pravite novu granu za svaku novu funkcionalnost
-2. Često pravite commite sa smislenim porukama
-3. Pre merga uvek povucite najnovije promene sa main grane
-4. Testirajte kod pre nego što pošaljete PR
+## ⚠️ Važna pravila
 
-## 🗂️ Korisne Git komande
-| Komanda                     | Opis                                  |
-|-----------------------------|---------------------------------------|
-| `git log --oneline --graph` | Pregled istorije sa granama           |
-| `git diff ime-grane`        | Prikaz razlika u odnosu na trenutnu granu |
-| `git stash`                 | Privremeno sačuvaj promene bez commita|
-| `git rebase main`           | Ažuriraj granu na najnoviji main      |
+1. **Nikad ne radite direktno na main grani**
+2. Uvek napravite novu granu za svaku funkcionalnost
+3. Držite PR-ove malim i fokusiranim
+4. Redovno sinhronizujte vaš fork
+5. Pišite jasne commit poruke
 
-## 📝 Zadatak za vežbu
-1. Dodajte novu matematicku funkciju u novoj grani
-2. Spojite je u main granu
-3. Simulirajte konflikt sa drugim korisnikom
-4. Rešite konflikt i potvrdite rešenje
+## 📝 Git cheat sheet
+
+| Komanda | Opis |
+|---------|------|
+| `git status` | Pregled stanja |
+| `git log --oneline` | Pregled istorije |
+| `git fetch --all` | Preuzmi sve promene |
+| `git branch -a` | Lista svih grana |
+| `git remote -v` | Lista svih remote-ova |
+
+## 🎓 Zadaci za vežbu
+
+1. Forkujte repozitorijum
+2. Napravite novu granu
+3. Dodajte novu matematičku funkciju u `tutorial.py`
+4. Pošaljite Pull Request
+5. Rešite konflikt ako se pojavi
+
+## 🆘 Česti problemi i rešenja
+
+### Problem: Ne mogu da push-ujem promene
+```bash
+git push origin feature/nova-funkcionalnost -f  # Koristite force push oprezno!
+```
+
+### Problem: Pogrešna upstream grana
+```bash
+# Proverite trenutni upstream
+git remote -v
+
+# Dodajte ispravan ako je potrebno
+git remote add upstream https://github.com/PetrarkaR/BEST-Nis-tut.git
+```
+
+### Problem: Konflikti pri merge-u
+```bash
+# Prekinite merge
+git merge --abort
+
+# Počnite ponovo
+git fetch upstream
+git merge upstream/main
+```
+
+## 📚 Dodatni resursi
+
+- [Git dokumentacija](https://git-scm.com/doc)
+- [GitHub Guides](https://guides.github.com)
+- [GitHub Flow](https://guides.github.com/introduction/flow/)
+
+## 🤝 Pravila doprinosa
+
+1. Svaki PR mora da ima jasan opis
+2. Kod mora biti testiran
+3. Pratite postojeći stil koda
+4. Jedan PR = jedna funkcionalnost
