@@ -15,7 +15,7 @@ def deljenje(a, b):
 # TODO: dodati jos operacija za nas kalkulator
 
 if __name__ == "__main__":
-    print("dobrodosli u kalkulator!")
+    print("dobrodosli u zli kalkulator")
     while True:
         print("\nIzaberite operaciju:")
         print("1. Sabiranje")
