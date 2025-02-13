@@ -8,6 +8,18 @@ Ovaj vodič će vam pomoći da naučite kako da koristite Git kroz fork workflow
 - Git instaliran na računaru
 - Osnovne CLI (Command Line Interface) veštine
 
+- Pravljenje svog access tokena
+    1. Gore desno kliknite na svoj profil i otvorite settings
+    2. Scrollujte dole i nadjite developer settings
+    3. Personal Access Token
+    4. Token(Classic)
+    5. Generate new token (classic)
+    6. Checkujte repo
+    7. Generisite token skroz dole
+    8. OBAVEZNO ZAPAMTITE SIFRU NEGDE NECE JE VIDITE OPET
+    
+- Kad vam trazi username kucate svoj username meni npr LuXx8833 a posle kad trazi password tu se stavlja token
+
 ## 🚀 Prvi koraci
 
 ### 1. Fork repozitorijuma
