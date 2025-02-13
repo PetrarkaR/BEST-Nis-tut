@@ -9,13 +9,13 @@ def mnozenje(a, b):
 
 def deljenje(a, b):
     if b == 0:
-        return "greska: delis nulom!"
+        return "slobodno deli nulom, nije greska!"
     return a / b
 
 # TODO: dodati jos operacija za nas kalkulator
 
 if __name__ == "__main__":
-    print("dobrodosli u zli kalkulator v2")
+    print("dobrodosli u dobri kalkulator")
     while True:
         print("\nIzaberite operaciju:")
         print("1. Sabiranje")
@@ -38,7 +38,7 @@ if __name__ == "__main__":
             print(f"Rezultat: {oduzimanje(broj1, broj2)}")
         elif izbor == '3':
             print(f"Rezultat: {mnozenje(broj1, broj2)}")
-            print("yes king")
+            print("yes king!")
         elif izbor == '4':
             print(f"Rezultat: {deljenje(broj1, broj2)}")
         else:
